@@ -53,7 +53,9 @@ export const PhoneCatalog = () => {
 
   return (
     <>
-      <div className="block--horizontal">
+      <h1 className="title is-1">Phone catalog</h1>
+
+      <div className="block is-flex">
         <div className="block--sort">
           Sort by
           <Dropdown
@@ -82,9 +84,7 @@ export const PhoneCatalog = () => {
         </div>
       </div>
 
-      <h1 className="title">Phone catalog</h1>
-
-      <div className="container">
+      <div className="container level-item">
         <ul className="catalog">
           {visiblePhones.map(el => {
             const {

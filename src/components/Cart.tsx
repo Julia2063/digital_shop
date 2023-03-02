@@ -53,42 +53,45 @@ export const Cart: React.FC<Props> = ({ setIsCart }) => {
 
         <div className="modal-card-body">
           <table className="table is-fullwidth">
-            {visibledCart.map((el, i) => {
-              const { name, price, id } = el as Phone;
-              const count = cart.filter(e => id === e.id).length;
+            <tbody>
+              {visibledCart.map((el, i) => {
+                const { name, price, id } = el as Phone;
+                const count = cart.filter(e => id === e.id).length;
 
-              return (
-                <tr key={id}>
-                  <td>
-                    {i + 1}
-                  </td>
-                  <td>
-                    {name}
-                  </td>
-                  <td>
-                    {`x ${count}`}
-                  </td>
-                  <td>
-                    {`${price}₴`}
-                  </td>
-                  <td>
-                    <button
-                      id={id}
-                      type="button"
-                      aria-label="Mute volume"
-                      className="delete"
-                      onClick={handleDelete}
-                    >
-                    </button>
-                  </td>
+                return (
+                  <tr key={id}>
+                    <td>
+                      {i + 1}
+                    </td>
+                    <td>
+                      {name}
+                    </td>
+                    <td>
+                      {`x ${count}`}
+                    </td>
+                    <td>
+                      {`${price}₴`}
+                    </td>
+                    <td>
+                      <button
+                        id={id}
+                        type="button"
+                        aria-label="Mute volume"
+                        className="delete"
+                        onClick={handleDelete}
+                      >
+                      </button>
+                    </td>
 
-                </tr>
-              );
-            })}
+                  </tr>
+                );
+              })}
+            </tbody>
+
           </table>
-          <footer className="modal-card-foot has-text-right">
+          <footer className="modal-card-foot has-text-right is-justify-content-flex-end">
             <div className="title is-4">
-              {`${cart.map(el => el.price).reduce((a, b) => a + b)} ₴`}
+              {`${cart.map(el => el.price).reduce((a, b) => a + b, 0)} ₴`}
               <p className="block--sort">{`total for ${cart.length} items`}</p>
             </div>
           </footer>

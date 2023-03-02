@@ -1,22 +1,13 @@
+body {
+  padding-top: 50px;
+}
+
 iframe {
   display: none;
 }
 
-.container {
-  display: flex;
-  padding: 30px 0;
-  justify-content: center;
-  flex-direction: column;
-
-  &--nav {
-    padding: 0;
-    flex-direction: row;
-  }
-}
-
 .home-page {
   &__title {
-    display: block;
     height: 180px;
   }
 }
@@ -145,11 +136,6 @@ iframe {
     margin-bottom: 10px;
     font-size: 13px;
   }
-  &--horizontal {
-    display: flex;
-    justify-content: space-around;
-    width: 50%;
-  }
 }
 
 .phoneInfo {
@@ -185,14 +171,10 @@ iframe {
   width: 200px
 }
 
-.footer {
-  display: flex;
-  justify-content: space-between;
-  padding: 3rem 15rem 3rem;
-}
 
 .noColoredLink {
   color: black;
+  width: 100;
     &:hover {
       color: blue;
     }
@@ -203,6 +185,6 @@ iframe {
   height: 35px;
 }
 
-.modal-card-foot {
-  justify-content: flex-end;
+.footer {
+  padding: 3rem 5rem 3rem;
 }

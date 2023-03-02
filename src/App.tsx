@@ -22,10 +22,9 @@ export const App: React.FC = () => {
   }, [cart]);
 
   return (
-    <>
-      <div>
-        <Navbar setIsCart={setIsCart} />
-      </div>
+    <div>
+      <Navbar setIsCart={setIsCart} />
+
       <div className="section">
         <div className="container">
           <Routes>
@@ -46,10 +45,8 @@ export const App: React.FC = () => {
           </Routes>
         </div>
       </div>
-      <div>
-        <Footer />
-      </div>
-    </>
+      <Footer />
+    </div>
 
   );
 };

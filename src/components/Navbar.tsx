@@ -25,17 +25,15 @@ export const Navbar: React.FC<Props> = ({ setIsCart }) => {
       role="navigation"
       aria-label="main navigation"
     >
-      <div className="container container--nav">
+      <div className="container is-flex is-flex-wrap-nowrap is-justify-content-space-between ">
         <div className="navbar-brand">
           <a className="navbar-item" href="home">
             <img src={favikon} alt="logo" width="80" />
           </a>
-
           <PageNavLink to="/" text="HOME PAGE" />
           <PageNavLink to="phones_catalog" text="PHONES CATALOG" />
         </div>
-
-        <div className="navbar-end">
+        <div className="navbar-brand is-flex">
           <NavLink to="accaunt" className="navbar-item" onClick={handleCart}>
             <img src={accaunt} alt="cart" className="icon" />
           </NavLink>
@@ -47,6 +45,7 @@ export const Navbar: React.FC<Props> = ({ setIsCart }) => {
           </NavLink>
         </div>
       </div>
+
     </nav>
   );
 };

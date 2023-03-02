@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { PageNavLink } from './PageNavLink';
 
 import cartImg from '../assets/icons/cartImg.svg';
@@ -27,9 +27,9 @@ export const Navbar: React.FC<Props> = ({ setIsCart }) => {
     >
       <div className="container is-flex is-flex-wrap-nowrap is-justify-content-space-between ">
         <div className="navbar-brand">
-          <a className="navbar-item" href="home">
+          <Link to="/" className="navbar-item">
             <img src={favikon} alt="logo" width="80" />
-          </a>
+          </Link>
           <PageNavLink to="/" text="HOME PAGE" />
           <PageNavLink to="phones_catalog" text="PHONES CATALOG" />
         </div>

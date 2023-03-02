@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import favikon from '../assets/icons/favikon.svg';
 
 export const Footer = () => (
   <footer className="footer is-flex">
     <div className="column has-text-centered">
-      <a href="/">
+      <Link to="/">
         <img src={favikon} alt="logo" width="50" className="" />
-      </a>
+      </Link>
     </div>
 
     <div className="column has-text-centered">Made by Juliia Terekhova</div>

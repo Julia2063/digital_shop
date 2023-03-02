@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { SearchLink } from './SearchLink';
 
@@ -15,8 +15,25 @@ export const Dropdown: React.FC<Props> = ({ type, values }) => {
   const value = searchParams.get(`${type}`);
 
   const toggle = () => {
-    setActive(!active);
+    setActive(current => !current);
   };
+
+  useEffect(() => {
+    if (!active) {
+      return;
+    }
+
+    const handleDocumentClick = () => {
+      setActive(false);
+    };
+
+    document.addEventListener('dblclick', handleDocumentClick);
+
+    // eslint-disable-next-line consistent-return
+    return () => {
+      document.removeEventListener('dblclick', handleDocumentClick);
+    };
+  }, [active]);
 
   return (
     <div

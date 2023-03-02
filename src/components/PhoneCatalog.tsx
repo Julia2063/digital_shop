@@ -7,25 +7,21 @@ import { SearchLink } from './SearchLink';
 import { TechInfo } from './TechInfo';
 
 export const PhoneCatalog = () => {
-  const [phone, setPhone] = useState(phoneList);
+  const [, setPhone] = useState(phoneList);
   const sortTypeValues = ['Expensive', 'Cheap', 'Alphabeticaly'];
   const filterTypeValues = phoneList.map(el => el.color)
     .filter((el, i, arr) => !arr.slice(i + 1).includes(el));
   const [searchParams] = useSearchParams();
   const copyPhoneList: Phone[] = useMemo(() => {
-    return [...phone];
-  }, [phone]);
+    return [...phoneList];
+  }, [searchParams]);
 
   const sortType = searchParams.get('sortType');
   const filterType = searchParams.get('filterType');
 
   const visiblePhones = useMemo(() => {
-    if (filterType) {
-      return copyPhoneList.filter(el => el.color === filterType);
-    }
-
-    return copyPhoneList;
-  }, [searchParams, copyPhoneList]);
+    return filterType ? copyPhoneList.filter(el => el.color === filterType) : copyPhoneList;
+  }, [searchParams]);
 
   useEffect(() => {
     visiblePhones.sort((phone1, phone2) => {
@@ -46,10 +42,6 @@ export const PhoneCatalog = () => {
 
     setPhone(visiblePhones);
   }, [searchParams]);
-
-  const handleReset = () => {
-    setPhone(phoneList);
-  };
 
   return (
     <>
@@ -75,7 +67,6 @@ export const PhoneCatalog = () => {
           <button
             className="button sort-button"
             type="button"
-            onClick={handleReset}
           >
             <SearchLink params={{ filterType: null, sortType: null }} className="noColoredLink">
               RESET

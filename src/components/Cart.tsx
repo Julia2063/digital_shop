@@ -36,9 +36,7 @@ export const Cart: React.FC<Props> = ({ setIsCart }) => {
 
       <div className="modal-card">
         <header className="modal-card-head">
-          <div
-            className="modal-card-title has-text-weight-medium"
-          >
+          <div className="modal-card-title has-text-weight-medium">
             Cart
           </div>
 

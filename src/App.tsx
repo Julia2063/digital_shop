@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './App.scss';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import {
+  Navigate,
+  Route,
+  Routes,
+} from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Navbar } from './components/Navbar';
 import { HomePage } from './components/HomePage';
@@ -11,11 +15,16 @@ import { Cart } from './components/Cart';
 import { useLocalStorage } from './utils/useLocalStorage';
 import { Phone } from './types/Phone';
 import { set } from './features/cartSlice';
+import { Account } from './components/Account';
+import { LoginPage } from './components/LoginPage';
+import { RegisterPage } from './components/RegisterPage';
+import { useAppSelector } from './app/hooks';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
   const [isCart, setIsCart] = useState(false);
   const [cart] = useLocalStorage<Phone[]>('cart', []);
+  const { user } = useAppSelector(state => state.user);
 
   useEffect(() => {
     dispatch(set(cart));
@@ -30,7 +39,7 @@ export const App: React.FC = () => {
           <Routes>
             <Route
               path="*"
-              element={<h1 className="title">Page not found</h1>}
+              element={<h1 className="title is-1">Page not found</h1>}
             />
             <Route
               path="/"
@@ -42,6 +51,9 @@ export const App: React.FC = () => {
               <Route path=":slug" element={(<PhoneInfo />)} />
             </Route>
             <Route path="cart" element={isCart && <Cart setIsCart={setIsCart} />} />
+            <Route path="account" element={user ? <Account /> : <LoginPage />} />
+            <Route path="register" element={!user && <RegisterPage />} />
+            <Route path="login" element={!user && <LoginPage />} />
           </Routes>
         </div>
       </div>

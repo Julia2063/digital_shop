@@ -34,7 +34,7 @@ export const Navbar: React.FC<Props> = ({ setIsCart }) => {
           <PageNavLink to="phones_catalog" text="PHONES CATALOG" />
         </div>
         <div className="navbar-brand is-flex">
-          <NavLink to="accaunt" className="navbar-item" onClick={handleCart}>
+          <NavLink to="account" className="navbar-item">
             <img src={accaunt} alt="cart" className="icon" />
           </NavLink>
           <NavLink to={phones.length > 0 ? 'cart' : 'phones_catalog'} className="navbar-item" onClick={handleCart}>

@@ -1,5 +1,7 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { set } from '../features/cartSlice';
 import { Phone } from '../types/Phone';
 import { useLocalStorage } from '../utils/useLocalStorage';
 
@@ -15,6 +17,15 @@ export const Cart: React.FC<Props> = ({ setIsCart }) => {
   };
 
   const [cart, setCart] = useLocalStorage<Phone[]>('cart', []);
+  const { user } = useAppSelector(state => state.user);
+  const dispatch = useAppDispatch();
+
+  const handleBuy = () => {
+    setCart([]);
+    dispatch(set([]));
+    location.pathname = '/phones_catalog';
+    setIsCart(false);
+  };
 
   const groupedCart = cart.map((el, i, arr) => {
     return [el.id, arr.filter(e => e.id === el.id).length];
@@ -87,7 +98,15 @@ export const Cart: React.FC<Props> = ({ setIsCart }) => {
             </tbody>
 
           </table>
-          <footer className="modal-card-foot has-text-right is-justify-content-flex-end">
+          <footer className="modal-card-foot has-text-right is-justify-content-space-between">
+            {user ? (
+              <button type="button" className="button is-link" onClick={handleBuy}>
+                BUY
+              </button>
+            ) : (
+              <Link to="/notification" className="button is-link">BUY</Link>
+            )}
+
             <div className="title is-4">
               {`${cart.map(el => el.price).reduce((a, b) => a + b, 0)} ₴`}
               <p className="block--sort">{`total for ${cart.length} items`}</p>

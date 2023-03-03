@@ -18,6 +18,7 @@ export const Account = () => {
           onClick={() => dispatch(set(null))}
         >
           Log out from
+          {' '}
           {email}
         </button>
       </div>

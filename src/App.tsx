@@ -18,6 +18,7 @@ import { set } from './features/cartSlice';
 import { Account } from './components/Account';
 import { LoginPage } from './components/LoginPage';
 import { RegisterPage } from './components/RegisterPage';
+import { Notification } from './components/Notification';
 import { useAppSelector } from './app/hooks';
 
 export const App: React.FC = () => {
@@ -54,6 +55,7 @@ export const App: React.FC = () => {
             <Route path="account" element={user ? <Account /> : <LoginPage />} />
             <Route path="register" element={!user && <RegisterPage />} />
             <Route path="login" element={!user && <LoginPage />} />
+            <Route path="notification" element={<Notification />} />
           </Routes>
         </div>
       </div>

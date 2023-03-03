@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '../app/hooks';
 import { set } from '../features/cartSlice';
 
 import { Phone } from '../types/Phone';
@@ -18,7 +18,7 @@ export const TechInfo: React.FC<Props> = ({ phone }) => {
     ram,
   } = phone;
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [cart, setCart] = useLocalStorage<Phone[]>('cart', []);
 
   const handleFillCart = () => {
